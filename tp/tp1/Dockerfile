@@ -1,16 +1,23 @@
-ARG VERSION=3.13
+# ARG VERSION=3.13
 
-FROM alpine:$VERSION as builder
+# FROM alpine:$VERSION as builder
 
-RUN apk update && apk upgrade 
+# RUN apk update && apk upgrade && apk --update --no-cache add bash
+
+# RUN echo "$VERSION test" > /message.txt
 
 FROM nginx:alpine
 
 ENV TIMEZONE Europe/Paris
 
-RUN apk update && apk upgrade
+RUN apk update && apk upgrade # && apk --update --no-cache add bash
 
-# COPY --from=builder /index.html /var/www/html/index.html
+# WORKDIR /opt
+
+# COPY --from=builder /message.txt /opt/message.txt
+
+# CMD ["cat", "/opt/message.txt"]
+# ENTRYPOINT ["/usr/bin/cat", "/opt/message.txt"]
 
 EXPOSE 80
 

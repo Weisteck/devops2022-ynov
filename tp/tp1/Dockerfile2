@@ -1,0 +1,17 @@
+ARG VERSION=3.13
+
+FROM alpine:$VERSION as builder
+
+RUN apk update && apk upgrade && apk --update --no-cache add bash
+
+RUN echo "Hello World !" > /message.txt
+
+FROM alpine:$VERSION
+
+RUN apk update && apk upgrade 
+
+WORKDIR /opt
+
+COPY --from=builder /message.txt /opt/message.txt
+
+CMD ["cat", "/opt/message.txt"]
