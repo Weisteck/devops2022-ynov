@@ -67,3 +67,9 @@ Commande lancee :
 docker build -t base .
 docker run base
 ```
+
+
+#### Diff entre ARG et ENV
+
+Dans le build : ARG + ENV
+Run : ENV
