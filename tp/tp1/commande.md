@@ -11,4 +11,19 @@ docker logs tp1
 docker network create commun
 
 # add option --network commun
+
+# pour le load balancer
+docker run --name loadbalancer -v "$(pwd)/data/:/etc/nginx/conf.d" -d -p 8000:80 nginx
 ```
+
+fichier de conf `nginx.conf` :
+```
+upstream loadbalancer {
+	server 172.17.0.2:80
+	server 172.17.0.3:80
+}
+server {
+	location / {
+		proxy_pass http://loadbalancer;
+	}
+}
