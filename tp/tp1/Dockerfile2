@@ -10,8 +10,12 @@ FROM alpine:$VERSION
 
 RUN apk update && apk upgrade 
 
+RUN apk add curl
+
 WORKDIR /opt
 
 COPY --from=builder /message.txt /opt/message.txt
 
-CMD ["cat", "/opt/message.txt"]
+# CMD ["cat", "/opt/message.txt"]
+
+CMD curl 172.18.0.2

@@ -6,4 +6,9 @@ docker build -t tp1 .
 docker run --name tp1 -v "$(pwd)/data:/usr/share/nginx/html" -p 8000:80 tp1
 
 docker logs tp1
+
+# creer un network
+docker network create commun
+
+# add option --network commun
 ```
