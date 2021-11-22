@@ -73,3 +73,21 @@ docker run base
 
 Dans le build : ARG + ENV
 Run : ENV
+
+
+
+## Organisation
+
+### Minicube
+
+Commande utile :
+- lancer le serveur :
+``` minikube start ```
+- etat :
+``` minikube status ```
+- se connecter a la vm :
+``` minikube ssh ```
+- logs :
+``` minikube logs ```
+- recuperer de l'adresse ip
+``` minikube ip ```
