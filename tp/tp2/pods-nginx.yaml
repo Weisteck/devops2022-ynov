@@ -11,6 +11,13 @@ spec:
     image: nginx:1.14.2
     ports:
     - containerPort: 80
+    volumeMounts:
+      - name: index2
+        mountPath: /usr/share/nginx/html
+  volumes:
+    - name: index2
+      configMap:
+        name: index2
 ---
 apiVersion: v1
 kind: Pod
@@ -24,3 +31,10 @@ spec:
     image: nginx:1.14.2
     ports:
     - containerPort: 80
+    volumeMounts:
+      - name: index3
+        mountPath: /usr/share/nginx/html
+  volumes:
+    - name: index3
+      configMap:
+        name: index3
